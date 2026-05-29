@@ -31,3 +31,8 @@ All the following items try modify the kernel's memory access pattern by trying 
 #### Things that did seem to work:
 
 * [v6](v6.cu) -  Implicitly prefetching from global to shared memory: It seems to be possible to concurrently execute host -> device, device -> host copies, and a kernel copying global -> shared memory.
+
+
+#### Not sure yet
+
+* [v7](v7.cu) - Use of `__restrict__` keyword in function declaration. This changes the undelying PTX of the load operation from `ld.global.f32` to `ld.global.nc.f32`. The store `st.global.f32` remains unchanged.
