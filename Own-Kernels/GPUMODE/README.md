@@ -1,6 +1,6 @@
 # Fast vector addition on A100 - 80 GB
 
-This is my solution to the float16 vector addition problem https://www.gpumode.com/leaderboard/543?tab=rankings
+[This](submission.py) is my solution to the float16 vector addition problem https://www.gpumode.com/leaderboard/543?tab=rankings
 
 At time of writing I'm listed at 6th place (tied with places 6-9), and I have run out of ideas what to try. The currently best solution is 0.27% (2.4 μs) faster.
 
