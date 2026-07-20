@@ -1,0 +1,7 @@
+# Ignore all executables (all 3 lines needed)
+# *
+# !*.*
+# !*/
+
+.vscode
+books-papers/
