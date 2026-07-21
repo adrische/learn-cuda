@@ -19,7 +19,7 @@ DEVICE = triton.runtime.driver.active.get_active_torch_device()
 def naive_softmax(x: torch.Tensor): # x: (r, c)
     x_max = x.max(dim=1).values # (r, ), alternatively: keepdim=True -> (r, 1)
     z = x - x_max[:, None] # x_max[:, None] (r, 1)
-    numerator = x.exp() # (r, c)
+    numerator = z.exp() # (r, c)
     denominator = numerator.sum(dim=1) # (r, )
     ret = numerator / denominator[:, None]
     return ret
@@ -30,7 +30,7 @@ naive_softmax_compiled = torch.compile(naive_softmax)
 def softmax_kernel(
     output_ptr,
     input_ptr,
-    input_row_stride, # no col stride needed?
+    input_row_stride, # no col stride needed? -> usuilly col stride = 1 in torch
     output_row_stride,
     n_rows,
     n_cols,
